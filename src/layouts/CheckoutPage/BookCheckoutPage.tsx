@@ -9,6 +9,8 @@ import type BookModel from '@/models/BookModel';
 import SpinnerLoading from '@/utils/SpinnerLoading';
 import { StarsReview } from '@/utils/StarsReview';
 
+import { CheckoutAndReviewPage } from './CheckoutAndReviewPage';
+
 type Props = {
   book_id: string;
 };
@@ -59,20 +61,15 @@ export default function BookCheckoutPage({ book_id }: Props) {
       </div>
     );
   }
-  // if (httpError) {
-  //   return (
-  //     <div>
-  //       <p>{httpError}</p>
-  //     </div>
-  //   );
-  // }
+  if (httpError) {
+    return (
+      <div>
+        <p>{httpError}</p>
+      </div>
+    );
+  }
   return (
     <div>
-      <Grid gutter={5} gutterXs="md" gutterMd="xl" gutterXl={50}>
-        <Grid.Col span={4}>1</Grid.Col>
-        <Grid.Col span={4}>2</Grid.Col>
-        <Grid.Col span={4}>3</Grid.Col>
-      </Grid>
       <Container size={'xl'} p={20}>
         <Grid>
           <Grid.Col span={3}>
@@ -85,13 +82,15 @@ export default function BookCheckoutPage({ book_id }: Props) {
               />
             ) : null}
           </Grid.Col>
-          <Grid.Col span={7} pl={150}>
+          <Grid.Col span={6} pl={0}>
             <Text fw={700}>{book?.title}</Text>
             <Text c="blue">{book?.author}</Text>
             {book?.description}
             <StarsReview rating={2.9} size={16} />
           </Grid.Col>
-          <Grid.Col span={2}>____</Grid.Col>
+          <Grid.Col span={3} pl={30}>
+            <CheckoutAndReviewPage />
+          </Grid.Col>
         </Grid>
       </Container>
     </div>
