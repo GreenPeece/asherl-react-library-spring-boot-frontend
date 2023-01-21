@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 
 import type BookModel from '@/models/BookModel';
 import SpinnerLoading from '@/utils/SpinnerLoading';
+import { StarsReview } from '@/utils/StarsReview';
 
 type Props = {
   book_id: string;
@@ -88,6 +89,7 @@ export default function BookCheckoutPage({ book_id }: Props) {
             <Text fw={700}>{book?.title}</Text>
             <Text c="blue">{book?.author}</Text>
             {book?.description}
+            <StarsReview rating={3.3} size={16} />
           </Grid.Col>
           <Grid.Col span={2}>____</Grid.Col>
         </Grid>

@@ -1,6 +1,7 @@
 import { Button, Center, Container, Grid, Paper, Text } from '@mantine/core';
 import { IconDatabase } from '@tabler/icons';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import type BookModel from '@/models/BookModel';
 
@@ -20,9 +21,11 @@ export const SearchBook: React.FC<{ book: BookModel }> = (props) => {
           <Center mt="auto" mb="auto">
             <Grid.Col span={6}>
               <Text>
-                <Button leftIcon={<IconDatabase size={14} />}>
-                  View more Details
-                </Button>
+                <Link href={`/checkout/${props.book.id}`}>
+                  <Button leftIcon={<IconDatabase size={14} />}>
+                    View more Details
+                  </Button>
+                </Link>
               </Text>
             </Grid.Col>
           </Center>
