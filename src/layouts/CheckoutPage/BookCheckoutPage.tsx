@@ -11,6 +11,7 @@ import SpinnerLoading from '@/utils/SpinnerLoading';
 import { StarsReview } from '@/utils/StarsReview';
 
 import { CheckoutWidget } from './CheckoutWidget';
+import { LatestReview } from './LatestReviews';
 
 type Props = {
   book_id: string;
@@ -146,7 +147,7 @@ export default function BookCheckoutPage({ book_id }: Props) {
             <Text fw={700}>{book?.title}</Text>
             <Text c="blue">{book?.author}</Text>
             {book?.description}
-            <StarsReview rating={2.9} size={16} />
+            <StarsReview rating={totalStars} size={16} />
           </Grid.Col>
           <Grid.Col span={3} pl={30}>
             {book && (
@@ -159,6 +160,7 @@ export default function BookCheckoutPage({ book_id }: Props) {
             )}
           </Grid.Col>
         </Grid>
+        <LatestReview reviews={reviews} bookId={book?.id} />
       </Container>
     </div>
   );
