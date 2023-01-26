@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
 
-import { Container, Grid, Text } from '@mantine/core';
+import { Card, Container, Grid, Text } from '@mantine/core';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
@@ -18,6 +18,7 @@ type Props = {
 };
 
 export default function BookCheckoutPage({ book_id }: Props) {
+  // Book state
   const [book, setBook] = useState<BookModel>();
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState(null);
@@ -29,6 +30,7 @@ export default function BookCheckoutPage({ book_id }: Props) {
 
   // Book useEffect
   useEffect(() => {
+    console.log(`Value of book_id in BOOK useeffect ${book_id}`);
     if (book_id !== undefined && book_id.length > 0) {
       const fetchBooks = async () => {
         const baseUrl: string = `http://localhost:8080/api/books/${book_id}`;
@@ -65,8 +67,10 @@ export default function BookCheckoutPage({ book_id }: Props) {
   // Reviews useEffect
 
   useEffect(() => {
+    console.log(`Value of book_id in REVIEW useeffect ${book_id}`);
     if (book_id !== undefined && book_id.length > 0) {
       const fetchBookReviews = async () => {
+        console.log('Passes the useeffect for review');
         const reviewUrl: string = `http://localhost:8080/api/reviews/search/findByBookId?bookId=${book_id}`;
         const responseReviews = await fetch(reviewUrl);
 
@@ -112,10 +116,10 @@ export default function BookCheckoutPage({ book_id }: Props) {
         setHttpError(error.message);
       });
     }
-  }, []);
+  }, [book_id]);
 
   // if (isLoading || isLoadingReview) {
-  if (isLoading) {
+  if (isLoading || isLoadingReview) {
     return (
       <div>
         <SpinnerLoading />
@@ -160,8 +164,16 @@ export default function BookCheckoutPage({ book_id }: Props) {
             )}
           </Grid.Col>
         </Grid>
-        <LatestReview reviews={reviews} bookId={book?.id} />
       </Container>
+      <Card radius="md">
+        <Card.Section>
+          {reviews.length > 0 && (
+            <LatestReview reviews={reviews} bookId={book?.id} />
+          )}
+        </Card.Section>
+      </Card>
     </div>
   );
 }
+
+// bookId={book?.id}

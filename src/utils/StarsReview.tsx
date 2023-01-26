@@ -43,9 +43,16 @@ export const StarsReview: React.FC<{ rating: number; size: number }> = (
       {Array.from({ length: halfStars }, (_, i) => (
         <ImStarHalf color="gold" size={props.size} key={i} />
       ))}
-      {Array.from({ length: emptyStars - 1 }, (_, i) => (
-        <ImStarEmpty color="gold" size={props.size} key={i} />
-      ))}
+
+      {emptyStars === 5 &&
+        Array.from({ length: emptyStars }, (_, i) => (
+          <ImStarEmpty color="gold" size={props.size} key={i} />
+        ))}
+
+      {emptyStars !== 5 &&
+        Array.from({ length: emptyStars - 1 }, (_, i) => (
+          <ImStarEmpty color="gold" size={props.size} key={i} />
+        ))}
     </div>
   );
 };
