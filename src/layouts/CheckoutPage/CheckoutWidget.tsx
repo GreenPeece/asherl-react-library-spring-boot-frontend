@@ -64,7 +64,7 @@ const mockdata = [
   { label: 'moneyback-guranteed', icon: IconGasStation },
 ];
 
-export function CheckoutAndReviewPage({ copiesAvailable }: BookModel) {
+export function CheckoutWidget({ copiesAvailable }: BookModel) {
   const { classes } = useStyles();
   const features = mockdata.map((feature) => (
     <Center key={feature.label}>
@@ -85,12 +85,12 @@ export function CheckoutAndReviewPage({ copiesAvailable }: BookModel) {
         <div>
           <Text weight={500}>Available</Text>
           <Text size="xs" color="dimmed">
-            The item's availability may be subject to change.
+            The item&apos;s availability may be subject to change.
           </Text>
         </div>
-        <Badge variant="outline">{copiesAvailable} copies available</Badge>
+        <Badge variant="outline">N copies available</Badge>
         <Text size="xs" color="dimmed">
-          Total copies: 10
+          Total copies: {copiesAvailable}
         </Text>
       </Group>
 
