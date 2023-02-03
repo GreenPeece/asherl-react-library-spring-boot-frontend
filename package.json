@@ -30,6 +30,8 @@
     "@mantine/form": "^5.10.0",
     "@mantine/hooks": "^5.10.0",
     "@mantine/next": "^5.10.0",
+    "@okta/okta-react": "^6.4.3",
+    "@okta/okta-signin-widget": "^6.3.3",
     "@tabler/icons": "^1.119.0",
     "embla-carousel-react": "^7.0.5",
     "next": "^13.1.1",
@@ -38,6 +40,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-router-dom": "^6.8.0",
     "react-scroll": "^1.8.9"
   },
   "devDependencies": {
